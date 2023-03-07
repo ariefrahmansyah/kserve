@@ -23,6 +23,9 @@ kserve:
       ingressGateway:
         gateway: knative-serving/knative-ingress-gateway
         gatewayService: istio-ingressgateway.istio-system.svc.cluster.local
+      ingressClassName: istio
+      domainTemplate: "{{ .Name }}-{{ .Namespace }}.{{ .IngressDomain }}"
+      urlScheme: http
     image: kserve/kserve-controller
     tag: *defaultVersion
     resources:
